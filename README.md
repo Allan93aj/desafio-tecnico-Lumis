@@ -1,72 +1,80 @@
 # 📖 Pokédex Interativa
 
 Este projeto é uma **Pokédex online** que consome dados da [PokeAPI](https://pokeapi.co/).  
-Ele mostra os Pokémons em cards, permite buscar por **nome, ID ou tipo (em português ou inglês)** e tem **paginação dinâmica**.
+Ele mostra os Pokémons em cards, permite buscar por **nome, ID ou tipo (em português ou inglês)**, tem **paginação dinâmica** e um **botão de voltar ao topo para mobile**.
 
 ---
 
 ## ⚡ Funcionalidades
 - Exibe **18 Pokémons por página**.
 - Mostra **ID, imagem, nome e tipo** (com tradução para português).
-- **Paginação deslizante** com destaque na página atual.
+- **Paginação deslizante** com até 3 páginas visíveis e destaque na página atual.
 - Busca inteligente:
   - Por **nome** → ex: `charmander`
   - Por **ID** → ex: `#25`
   - Por **tipo** → ex: `fogo`, `água`, `fire`, `water`
 - Evita duplicados nos resultados.
 - Se não encontrar nada → mostra mensagem: *Nenhum Pokémon encontrado.*
+- **Botão "Voltar ao topo"** aparece automaticamente em telas menores (mobile) ao rolar a página.
 
 ---
 
 ## 🛠️ Estrutura do Código
 
 ### 🔹 Seletores principais
-Pega os elementos do HTML para manipular a Pokédex, barra de busca, paginação e botões.
+Identifica os elementos principais do HTML (Pokedéx, barra de busca, paginação, botões).
 
 ### 🔹 Variáveis de controle
-Guarda a página atual, total de páginas, limite de Pokémons por página e a lista completa da API.
+Guarda informações de página atual, limite de Pokémons por página e lista completa da API.
 
 ### 🔹 Tradução dos tipos
 Converte os tipos da API (em inglês) para português.  
 Exemplo: `fire → Fogo`.
 
 ### 🔹 Carregamento inicial
-`loadAllPokemon()` → busca todos os Pokémons da API, calcula o total de páginas e mostra a primeira.
+`loadAllPokemon()` → busca todos os Pokémons, calcula páginas e carrega a primeira.
 
 ### 🔹 Paginação
-- `loadPage(page)` → mostra os Pokémons de uma página específica.  
-- `renderPagination()` → cria os botões **Anterior / Próximo** e até 3 números de página.
+- `loadPage(page)` → carrega os Pokémons de uma página.  
+- `renderPagination()` → cria botões **Anterior / Próximo** e até 3 páginas ao mesmo tempo.
 
 ### 🔹 Exibição dos Pokémons
-`displayPokemon()` → monta os cards com nome, tipo traduzido, imagem e ID.
+`displayPokemon()` → cria os **cards com nome, tipo, ID e imagem**.
 
-### 🔹 Busca
-`buscarPokemon(query)` → faz a busca por nome, ID ou tipo (pt/en).  
-- Aplica paginação nos resultados.  
-- Evita resultados duplicados.
+### 🔹 Busca avançada
+`buscarPokemon(query)` → pesquisa por nome, ID ou tipo (pt/en).  
+- Aplica paginação própria nos resultados.  
+- Remove duplicados.  
+- Mostra mensagem se não encontrar nada.
 
 ### 🔹 Paginação da busca
-`renderPaginationBusca()` → controla a paginação quando os resultados vêm de uma pesquisa.
+`renderPaginationBusca()` → controla a navegação entre páginas **quando há resultados filtrados**.
+
+### 🔹 Botão "Voltar ao topo"
+- Só aparece em **dispositivos móveis (até 768px)**.  
+- Fica visível se o usuário rolar mais de **200px**.  
+- Ao clicar, rola suavemente até o topo.
 
 ### 🔹 Eventos
-- Ao **digitar** na barra de busca → pesquisa automaticamente.  
-- Ao **clicar no botão Buscar** → pesquisa manualmente.  
-- Se a barra estiver vazia → volta para a lista completa.
+- Ao **digitar** → pesquisa em tempo real.  
+- Ao **clicar em Buscar** → pesquisa manual.  
+- Se a barra estiver vazia → volta para listagem completa.  
+- Scroll no mobile → ativa/desativa o botão "Voltar ao topo".
 
 ### 🔹 Inicialização
-`loadAllPokemon()` é chamado no final do código para carregar a Pokédex logo que a página abre.
+`loadAllPokemon()` → inicia a aplicação carregando a Pokédex completa.
 
 ---
 
 ## 📊 Fluxo Resumido
 
-1. Página abre → `loadAllPokemon()` carrega todos os Pokémons.  
+1. Página abre → carrega todos os Pokémons.  
 2. Usuário vê **18 cards por página** com paginação.  
-3. Usuário pode:  
-   - Usar paginação → troca a página.  
-   - Digitar na busca → pesquisa por nome, ID ou tipo.  
-4. Pokémons aparecem com **cards estilizados** e paginação adaptada.  
-5. Se não encontrar → mostra mensagem de erro.
+3. Pode navegar:  
+   - Paginação → troca página.  
+   - Busca → por nome, tipo ou ID.  
+4. Se estiver no mobile → botão "Voltar ao topo" aparece ao rolar.  
+5. Cards mostram **detalhes em português**.
 
 ---
 
@@ -75,11 +83,11 @@ Exemplo: `fire → Fogo`.
 
 ---
 
-## 💡 Exemplo de Busca
+## 💡 Exemplos de Busca
 - `pikachu` → busca por nome.  
-- `#150` → busca pelo ID (Mewtwo).  
+- `#150` → busca por ID (Mewtwo).  
 - `fogo` → busca por tipo em português.  
-- `fire` → busca por tipo em inglês.
+- `fire` → busca por tipo em inglês.  
 
 ---
 
