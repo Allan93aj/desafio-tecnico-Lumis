@@ -5,6 +5,16 @@ Ele mostra os Pokémons em cards, permite buscar por **nome, ID ou tipo (em port
 
 ---
 
+###  Instruções de execução
+1. Clone o repositório:
+   git clone https://github.com/Allan93aj/desafio-tecnico-Lumis.git
+2. Acesse a pasta do projeto:
+   abra a pasta (desafio-tecnico-Lumis) no seu VScode
+3. Abra o arquivo index.html diretamente no navegador (não é necessário servidor). 
+ou
+4. Deploy na Vercel (versão online):  
+https://desafio-tecnico-lumis.vercel.app/
+
 ## ⚡ Funcionalidades
 - Exibe **18 Pokémons por página**.
 - Mostra **ID, imagem, nome e tipo** (com tradução para português).
