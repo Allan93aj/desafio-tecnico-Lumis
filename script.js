@@ -113,7 +113,7 @@ function renderPagination() {
 
   // Botão Próximo
   const next = document.createElement('button');
-  next.innerHTML = `Próximo<img src="img/ArrowRight.png" alt="Proximo">`;
+  next.innerHTML = `Próximo<img src="img/Arrowright.png" alt="Proximo">`;
   if (currentPage === totalPages) next.classList.add('disabled');
   else next.addEventListener('click', () => loadPage(currentPage + 1));
   paginationDiv.appendChild(next);
