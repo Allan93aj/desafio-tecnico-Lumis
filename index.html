@@ -1,0 +1,49 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokedex Vanilla JS</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header id="main-header">
+        <div class="header-container">
+            <div class="logo">
+                <a href="/">
+                    <img src="/img/logo.png" alt="Logo Pokedex" height="40">
+                </a>
+            </div>
+            <nav class="menu">
+                <ul>
+                    <a href="/"><li>Home</li></a>
+                    <li>Pokédex</li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <div class="container-cards">
+        <div class="search-bar">
+            <input type="text" id="search" placeholder="Faça uma busca pelo nome do pokémon">
+            <button id="search-btn">
+                <img src="/img/lupa.png" alt="">
+            </button>
+        </div>
+        <main class="pokedex" id="pokedex"></main>
+        <div class="pagination">
+            <button id="prev">Anterior</button>
+            <button id="next">Próxima</button>
+        </div>
+    </div>
+<button id="back-to-top" style="display:none;">
+    <img src="/img/arrowtop.png" alt="Voltar ao topo" height="30">
+</button>
+
+
+    <script src="script.js"></script>
+</body>
+
+</html>
